@@ -1,12 +1,30 @@
 <template>
-  <div id="app">
-    <router-view />
+  <div id="app" @logSuccess="onLoginSuccess">
+    <router-view :username="transmitUsername" />
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  // eslint-disable-next-line
+  data() {
+    return {};
+  },
+  components: {},
+  computed: {
+    // Proprietà per passare l'username ad EndPage, ma non alle altre pagine
+    // eslint-disable-next-line
+    transmitUsername() {
+      return this.username;
+    },
+  },
+  methods: {
+    // eslint-disable-next-line
+    onLoginSuccess(value) {
+      this.username = value;
+    },
+  },
 };
 </script>
 

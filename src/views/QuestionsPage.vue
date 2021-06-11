@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="question-paragraph"></p>
-    <slot name="answers" class="answer-container"> </slot>
+    <div class="answer-container"></div>
   </div>
 </template>
 
@@ -16,8 +16,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$color-white: white;
+$font-size-big: 30px;
 .question-paragraph {
-  font-size: 30px;
+  font-size: $font-size-big;
   text-align: center;
 }
 .answer-table {
@@ -30,9 +32,9 @@ export default {
   border: 2px solid #555;
   border-radius: 5px;
   box-sizing: border-box;
-  color: white;
+  color: $color-white;
   cursor: pointer;
-  font-size: 30px;
+  font-size: $font-size-big;
   font-weight: 300;
   margin: 2%;
   padding: 3.5%;
