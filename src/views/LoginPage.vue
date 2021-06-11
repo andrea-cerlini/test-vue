@@ -33,6 +33,8 @@ export default {
     onLog: function () {
       if (this.username === "") {
         this.showErrorMessage = true;
+      } else {
+        this.$router.push({ path: "/quiz" });
       }
     },
   },
