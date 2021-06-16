@@ -2,70 +2,77 @@
   <div class="login-wrapper">
     <h2 class="login-title">Login</h2>
     <p class="login-message">Inserisci il tuo nome</p>
-    <p v-if="showErrorMessage" class="error">Inserisci un nome!</p>
+    <p v-if="showErrorMessage" class="error-message">Inserisci un nome!</p>
     <input
-      type="text"
-      class="name"
-      v-model="username"
-      placeHolder="Inserisci il nome :^)"
       @keydown.enter="onLog"
+      class="name-input"
+      placeHolder="Inserisci il nome :^)"
+      type="text"
+      v-model="username"
     />
     <input
-      type="button"
-      class="login-button"
-      value="Inizia il quiz"
       @click="onLog"
+      class="login-button"
+      type="button"
+      value="Inizia il quiz"
     />
   </div>
 </template>
 
-<script>
-export default {
-  name: "LoginWrapper",
-  // eslint-disable-next-line
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
+  name: "LoginPage",
   data() {
     return {
-      username: "",
       showErrorMessage: false,
+      username: "",
     };
   },
   methods: {
-    // eslint-disable-next-line
-    onLog: function (event) {
+    onLog: function () {
       if (this.username === "") {
         this.showErrorMessage = true;
+        (
+          document.getElementsByClassName("name-input")[0] as HTMLInputElement
+        ).focus();
       } else {
         this.$router.push({ path: "/quiz" });
         this.$emit("logSuccess", this.username);
       }
     },
   },
-};
+  mounted() {
+    (
+      document.getElementsByClassName("name-input")[0] as HTMLInputElement
+    ).focus();
+  },
+});
 </script>
 
 <style scoped lang="scss">
-$font-weight-bold: 600;
-$font-weight-big: 500;
-$font-weight-thin: 300;
-$font-size-regular: 20px;
-$font-size-small: 18px;
-$color-white: white;
+@use "sass:color";
+$font-size-regular: 18px;
+$font-size-small: #{$font-size-regular - 2px};
+
 .login-title {
-  color: rgb(63, 109, 184);
+  color: $main-title-color;
   font-weight: $font-weight-big;
   text-align: center;
 }
+
 .login-message {
-  color: #555;
+  color: lighten($main-grey-color, 20 / 3 /* 6.6666666 */);
   font-size: $font-size-regular;
   font-weight: $font-weight-bold;
   text-align: center;
 }
-.name {
-  background-color: rgba(133, 180, 255, 0.4);
-  border: 2px solid #777;
-  border-radius: 5px;
-  color: #444;
+
+.name-input {
+  background-color: rgba($main-color, 0.3);
+  border: 2px solid lighten($main-grey-color, 25%);
+  border-radius: $rounded-border-radius;
+  color: $main-grey-color;
   display: block;
   font-size: $font-size-small;
   margin: auto;
@@ -76,20 +83,21 @@ $color-white: white;
   transition: 0.4s;
   width: 40%;
   &:hover {
-    background-color: rgba(177, 206, 250, 0.3);
+    background-color: $input-focus-color;
     transition: 0.4s;
   }
   &:focus {
-    background-color: rgba(166, 200, 255, 0.3);
-    border: 2px solid #444;
+    background-color: $input-focus-color;
+    border: 2px solid $main-grey-color;
     transition: 0.4s;
   }
 }
+
 .login-button {
-  background-color: rgb(74, 133, 228);
+  background-color: $main-color;
   border: 0;
   border-radius: 30px;
-  box-shadow: 5px 5px 10px rgba(101, 131, 179, 0.5);
+  box-shadow: $box-shadow-main;
   color: $color-white;
   cursor: pointer;
   display: block;
@@ -100,19 +108,20 @@ $color-white: white;
   padding: 15px 35px;
   transition: 0.4s;
   &:hover {
-    background-color: rgb(111, 155, 226);
-    box-shadow: 6px 6px 15px rgba(65, 89, 128, 0.5);
+    background-color: lighten($main-color, 15%);
+    box-shadow: $box-shadow-hover;
     color: #444;
     transition: 0.4s;
   }
   &:active {
-    background-color: rgb(63, 109, 184);
-    box-shadow: 2px 2px 10px rgba(65, 89, 128, 0.8);
+    background-color: $button-active-color;
+    box-shadow: $box-shadow-active;
     color: $color-white;
     transition: 0.4s;
   }
 }
-.error {
+
+.error-message {
   color: rgb(255, 73, 73);
   text-align: center;
 }

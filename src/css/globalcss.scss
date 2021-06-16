@@ -1,0 +1,17 @@
+$color-white: white;
+$main-color: rgb(74, 133, 228);
+$input-focus-color: rgba(lighten($main-color, 15), 0.3);
+$main-grey-color: #444;
+$main-title-color: darken($main-color, 5%);
+$button-active-color: darken($main-color, 5%);
+
+$font-weight-thin: 300;
+$font-weight-regular: 400;
+$font-weight-big: 500;
+$font-weight-bold: 600;
+
+$rounded-border-radius: 5px;
+
+$box-shadow-main: 5px 5px 10px rgba(desaturate($main-color, 10), 0.5);
+$box-shadow-hover: 6px 6px 15px rgba(desaturate($main-color, 20), 0.5);
+$box-shadow-active: 2px 2px 10px rgba(darken($main-color, 30), 0.8);
