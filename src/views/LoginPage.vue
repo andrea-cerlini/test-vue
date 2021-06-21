@@ -1,5 +1,5 @@
 <template>
-  <div class="login-wrapper">
+  <div class="login-page">
     <h2 class="login-title">Login</h2>
     <p class="login-message">Inserisci il tuo nome</p>
     <p v-if="showErrorMessage" class="error-message">Inserisci un nome!</p>

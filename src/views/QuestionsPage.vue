@@ -163,8 +163,7 @@ export default Vue.extend({
       ) {
         this.score++;
       }
-      var previousQuestion = this.currentQuestion;
-      this.questionDatabase.splice(previousQuestion, 1);
+      this.questionDatabase.splice(this.currentQuestion, 1);
       this.loadQuestion();
     },
   },

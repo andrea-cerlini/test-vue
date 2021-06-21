@@ -1,5 +1,5 @@
 <template>
-  <div class="game-over-wrapper">
+  <div class="game-over-page">
     <h2 class="msg-end-quiz">Quiz terminato</h2>
     <div>
       <p class="end-msg-wrap">
